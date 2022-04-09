@@ -1,28 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head lang="pt-br">
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>teste</title>
-	<style>
-		h1{
-			margin-right: 8em;
-		}
-		canvas{
-			border: 5px solid black;
-		}
-		#jogardenovo{
-			display: flex;
-			justify-content: center;
-		}
-		.tabela{
-			display: flex;
-			justify-content: center;
-		}
-	</style>
+	<link rel="stylesheet" href="style.css">
+	
 </head>
 <body>
 	<div id="jogardenovo">
 		<h1 id="prompt"></h1>
-		<button>Jogar de novo</button>
+		<button id="btnjogar" onclick="jogarNovamente()">Jogar de novo</button>
 	</div>
 	<div class="tabela">
 		<canvas id="canvas1" width="200" height="200"></canvas>
@@ -42,109 +31,6 @@
 		<canvas id="canvas9" width="200" height="200"></canvas>
 	</div>
 
-	<script >
-		var prompt=document.getElementById("prompt");
-		var jogador = "Jogador 1";
-		var empate = true;
-		var cont = 0;
-		var tabelaJogo = [0,0,0,0,0,0,0,0,0]
-		var cor = ["yellow","green", "blue", "red", "pink", "orange", "purple", "grey", "brown"];
-		var ctx = [];
-		var canvas = [];
-		var ids = ["canvas1", "canvas2", "canvas3", "canvas4", "canvas5", "canvas6", "canvas7", "canvas8", "canvas9"];
-		for(let i=0;i<9;i++){
-			canvas[i] = document.getElementById(ids[i]);
-			ctx[i] = canvas[i].getContext("2d");
-		}
-
-		function rodada(){
-			if(jogador == "Jogador 2"){
-				prompt.innerText = "Jogador 1: x";
-			}else{
-				prompt.innerText = "Jogador 2: circulo";
-			}
-		}
-		function testeVitoria(){
-			rodada();
-			for(let i=1;i<3;i++){
-				if(tabelaJogo[0] == i && tabelaJogo[1] == i && tabelaJogo[2] == i){
-					empate = false;
-					prompt.innerText = "Vitória do "+jogador;
-				}else if(tabelaJogo[3] == i && tabelaJogo[4] == i && tabelaJogo[5] == i){
-					empate = false;
-					prompt.innerText = "Vitória do "+jogador;
-				}else if(tabelaJogo[6] == i && tabelaJogo[7] == i && tabelaJogo[8] == i){
-					empate = false;
-					prompt.innerText = "Vitória do "+jogador;
-				}else if(tabelaJogo[0] == i && tabelaJogo[3] == i && tabelaJogo[6] == i){
-					empate = false;
-					prompt.innerText = "Vitória do "+jogador;
-				}else if(tabelaJogo[1] == i && tabelaJogo[4] == i && tabelaJogo[7] == i){
-					empate = false;
-					prompt.innerText = "Vitória do "+jogador;
-				}else if(tabelaJogo[2] == i && tabelaJogo[5] == i && tabelaJogo[8] == i){
-					empate = false;
-					prompt.innerText = "Vitória do "+jogador;
-				}else if(tabelaJogo[0] == i && tabelaJogo[4] == i && tabelaJogo[8] == i){
-					empate = false;
-					prompt.innerText = "Vitória do "+jogador;
-				}else if(tabelaJogo[2] == i && tabelaJogo[4] == i && tabelaJogo[6] == i){
-					empate = false;
-					prompt.innerText = "Vitória do "+jogador;
-				}else if(cont == 9 && empate){
-					prompt.innerText = "Deu velha!";
-				}
-			}
-		}		
-		function botao(ctx, j){
-			var pos;
-			for(let i=0;i<9;i++){
-				if(j == i){
-					pos = i;
-				}
-			}
-
-			while(tabelaJogo[pos] == 0){
-				if(jogador == "Jogador 1"){
-					ctx.moveTo(20,20);
-					ctx.lineTo(180,180);
-					ctx.moveTo(180,20);
-					ctx.lineTo(20,180);
-					ctx.lineWidth = 30;
-					ctx.strokeStyle = "black";
-					ctx.stroke();
-					tabelaJogo[pos] = 1;
-					cont++;
-					testeVitoria();
-					jogador = "Jogador 2";
-				}else{
-					ctx.beginPath();
-					ctx.arc(100,100,70,0,2*Math.PI);
-					ctx.strokeStyle = "black";
-					ctx.lineWidth = 30;
-					ctx.stroke();
-					tabelaJogo[pos] = 2;
-					cont++;
-					testeVitoria();
-					jogador = "Jogador 1";
-				}
-			}
-		}
-		function quadro(){
-			for(let i=0;i<9;i++){
-				ctx[i].fillStyle = cor[i];
-				ctx[i].fillRect(0,0,200,200);
-			}
-			
-		}
-		prompt.innerText = "Jogador 1: x";
-		quadro();
-
-		for(let i=0;i<9;i++){
-			canvas[i].addEventListener("click", function(){
-				botao(ctx[i],i);
-			});
-		}
-	</script>
+	<script src="javascript.js"></script>
 </body>
 </html>
