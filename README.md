@@ -15,7 +15,7 @@ ser concluída ocasiona-se um empate, também chamado de "Velha".
 5. [ ] Opções de tema para o tabuleiro 
 
 ### Disponibilizar em
-[GitHub Page](https://danielsanchs.github.io/Loteca/)
+[GitHub Page](https://danielsanchs.github.io/Jogo_Da_Velha_X_Daniel-/)
 
 #### Prints da Tela
  | id | primeira tela | Segunda tela |
