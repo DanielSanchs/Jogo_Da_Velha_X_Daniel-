@@ -1,6 +1,0 @@
-- espada
-- colisão 
-- spaw de inimigos
-- inimigos contornam objetos
-- sprites de animação 
-- pontuação
